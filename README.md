@@ -2,7 +2,7 @@
 
 This is the sample application for [*Ruby on Rails Tutorial: Learn Web Development with Rails*](http://www.railstutorial.org/) by [Michael Hartl](http://www.michaelhartl.com/).
 
-[Live at Heroku]()
+[Live at Heroku](https://sample-rails-app-sg.herokuapp.com/)
 
 ## License
 
