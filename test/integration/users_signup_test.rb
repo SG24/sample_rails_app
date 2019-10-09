@@ -38,6 +38,7 @@ class UsersSignupTest < ActionDispatch::IntegrationTest
     # Just checking if the flash isn't empty as the test below is very specific and hence brittle
     # assert_select "div.alert.alert-success", "Welcome to the Sample App!"
     assert_not flash.empty?
+    assert is_logged_in?
   end
 
 end
