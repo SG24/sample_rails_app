@@ -29,9 +29,17 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     delete logout_path
     assert_not is_logged_in?
     assert_redirected_to root_url
+    # Simulates a user clicking logout in a second window in which he's logged in as well with the same account
+    delete logout_path
     follow_redirect!
     assert_select "a[href=?]", login_path
     assert_select "a[href=?]", logout_path, count: 0
     assert_select "a[href=?]", user_path(@user), count: 0
+  end
+
+  # test for if a user logged two browsers, logs out of the first browser but not from the second
+  # Subsequently, in database, his remember_digest will be nil
+  test "authenticated? should return false for a user with nil digest" do 
+    assert_not @user.authenticated?(" ")
   end
 end
