@@ -37,12 +37,6 @@ class UsersLoginTest < ActionDispatch::IntegrationTest
     assert_select "a[href=?]", user_path(@user), count: 0
   end
 
-  # test for if a user logged two browsers, logs out of the first browser but not from the second
-  # Subsequently, in database, his remember_digest will be nil
-  test "authenticated? should return false for a user with nil digest" do 
-    assert_not @user.authenticated?(" ")
-  end
-
   test "login with remembering" do
     log_in_as(@user, remember_me: "1")
     assert_equal cookies["remember_token"], assigns(:user).remember_token

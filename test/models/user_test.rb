@@ -76,4 +76,10 @@ class UserTest < ActiveSupport::TestCase
     assert_not @user.valid?
   end
 
+  # test for if a user logged two browsers, logs out of the first browser but not from the second
+  # Subsequently, in database, his remember_digest will be nil
+  test "authenticated? should return false for a user with nil digest" do 
+    assert_not @user.authenticated?(:remember, " ")
+  end
+
 end
